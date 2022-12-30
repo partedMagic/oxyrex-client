@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" id="mainBody">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet">
+    <head>
+        <meta charset="UTF-8">
+        <title>Oxyrex.io Rules and Privacy</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#FF0000">
+      <style>
+            body {
+                font-family: Ubuntu;
+            }
+
+            ::-webkit-scrollbar {
+                width: 6px;
+                height: 0
+            }
+
+            ::-webkit-scrollbar-track {
+                border-radius: 3px;
+                background: rgba(0, 0, 0, .15)
+            }
+
+            ::-webkit-scrollbar-thumb {
+                border-radius: 3px;
+                background: rgba(0, 0, 0, .3)
+            }
+
+            selector {
+                color: #000000;
+            }
+            selector:hover {
+                color: #333333;
+            }
+            selector.selected {
+                color: #AAAAAA;
+            }
+            center {
+                font-size: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <center>
+            <h1>
+                Oxyrex.io - Rules and Privacy<br/>
+                <selector id="rulesID">Rules</selector> | <selector id="privacyID">Privacy Information</selector> | <selector id="contactID">Contact Us</selector>
+            </h1>
+            <div id="rules" style="display: none;">
+                <p>
+                    These rules are required by all players to be followed at all times while using any service
+                    provided by <a href="./">Oxyrex.io</a>. Failure to comply with these rules can result in anything
+                    from a kick, to a temporary ban to a permanent ban.
+                </p>
+                <ol>
+                    <li>Do not attempt to modify the game in any way to change any aspects of the game that can automate or change any skill based or unintentional features using scripts or other procedures. Changing visual process that do not affect gameplay such as color and UI positioning is allowed.</li>
+                    <li>A bug is an unintentional aspect of the game that is not an intended feature. Do not abuse or exploit bugs. If you find a bug, please report it on the <a href="./feedback">feedback</a> page.</li>
+                    <li>Connecting to the game servers using any method that is <strong>not</strong> joining via the <a href="./">Oxyrex.io client</a> is not allowed. This includes botting of any form.</li>
+                    <li>Harassing anyone through any means, such as naming yourself something to offend another user, sending rude or offensive messages using the broadcast commands of the In-game terminal or the Discord bot is not allowed.</li>
+                    <li>No intentionally lagging or crashing servers by any means.</li>
+                    <li>The Developers are the law of the game, if we tell you to stop doing something, then you are required to do so or face consequences.</li>
+                </ol>
+            </div>
+            <div id="privacy" style="display: none;">
+                <p>
+                    We know that data collection is important to you, so it is our goal to be as transparent as possible.
+                    We do collect your IP address when you join our game servers. Once your IP is read from the WebSocket information,
+                    it is immediately hashed using SHA256, and only used to stop multiple tabs being opened, and to block banned users.
+                    If you end up getting banned from the game, your hashed IP address will be saved to a secure database. We never deal
+                    with raw IP addresses. When you connect to the main site, your IP is again hashed and only used for differentiating between
+                    users for seeing how many different people join the game within time periods. <strong>In either case, your IP is never
+                    seen by anyone and is encrypted with SHA256, which is a secure hashing algorithm to protect your data. Unless you are banned,
+                    your IP is never saved.</strong>
+                    Even when you are banned, the hash of the IP address is stored. We block all VPN or Proxy IP connections, and you will
+                    be forced to disable the VPN or Proxy in order to join.
+                </p>
+            </div>
+            <div id="contact" style="display: none;">
+                <p>
+                    We (The Developers) are available on Discord. You can find more information on our
+                    <a href="https://discord.gg/EWgzQXqp53">Official Discord</a>, and contact staff and other prominent community members, as
+                    well as converse with other players. The current developers are <strong>z46#4800</strong>, <strong>Absol#9662</strong>,
+                    <strong>Dogatorix#2044</strong> and <strong>Netheferious#1118</strong>.
+                </p>
+            </div>
+        </center>
+        <script>
+            function set(name) {
+                document.querySelectorAll("div").forEach(instance => instance.style.display = "none");
+                document.querySelectorAll("selector").forEach(instance => instance.classList.remove("selected"));
+                document.getElementById(name.replace("ID", "")).style.display = "block";
+                document.getElementById(name).classList.add("selected");
+                location.hash = name.replace("ID", "");
+            }
+            document.querySelectorAll("selector").forEach(element => {
+                element.onclick = () => {
+                    set(element.id);
+                }
+            });
+            let hashSet = false;
+            if (location.hash) {
+                const id = location.hash.replace("#", "").replace("ID", "");
+                const element = document.getElementById(id);
+                if (element) {
+                    set(id + "ID");
+                    hashSet = true;
+                }
+            }
+            if (!hashSet) {
+                set("rulesID");
+            }
+        </script>
+    </body>
+</html>
