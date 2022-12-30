@@ -1,6 +1,7 @@
 # oxyrex-client
-The client for Oxyrex.io, will never be open-sourced. Google Search has also been setup.
+It's the full suite. | Oxyrex.xyz client.
 
-https://github.com/JH-Jack/oxyrex-server for the server...
-Search for in app.js to replace with you're own server :) 
-servers: [
+https://github.com/JH-Jack/oxyrex-server - server
+
+How to set up your own:
+host the client somewhere. Then in app.js search for `servers: [` and from there you'll get it figured out on how to add your own, there should also be an example.
