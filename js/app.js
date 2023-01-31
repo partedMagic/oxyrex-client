@@ -17,11 +17,10 @@
   }
   let loadedData;
   try {
-    loadedData = await (await fetch(location.protocol + "//your_very-own=api*link!with&domain/data.json")).json()
+    loadedData = await (await fetch(location.protocol + "//api.oxyrex.xyz/data.json")).json()
   } catch (e) {
-    console.log("oblivion")
+    console.log("6ubui is ded!")
   }
-
   parseInt(localStorage.getItem("version"), 10) != loadedData.version && (new Popup("Thank you for playing Oxyrex.io! Please also join the discord server! There is a widget on the left side of this widget.", ["#E03E41", "#C01C21"]), localStorage.setItem("version", loadedData.data.version));
   const ads = function() {
     const e = document.createElement("div");
